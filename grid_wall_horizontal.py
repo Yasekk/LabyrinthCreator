@@ -1,7 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 class WallHorizontal(Sprite):
-	"""Klasa służące do tworzenia poziomych ścian"""
+	"""Klasa służące do tworzenia niewidzialch poiomzch ścian"""
 	def __init__(self,settings, screen):		
 		super().__init__()
 		self.screen=screen
