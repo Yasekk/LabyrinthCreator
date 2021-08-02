@@ -12,13 +12,13 @@ from wall_horizontal import WallHorizontal
 from buttons import ButtonSave, ButtonLoad
 
 def play():
-	#Inicjalizacja gry i podstawowe ustawienia.
+	"""Inicjalizacja gry i podstawowe ustawienia."""
 	pygame.init()
 	settings = Settings()
 	screen = pygame.display.set_mode((settings.screen_width,
 	                                 settings.screen_height))
 	pygame.display.set_caption("Labirynth")
-	#Tworzenie awatara gracza, niwidzialnej siatki ścian i pustych grup 
+	#Tworzenie awatara gracza, niewidzialnej siatki ścian i pustych grup 
 	#do ścian labiryntu.
 	player = Player(screen, settings)
 	save_button = ButtonSave(settings, screen)
@@ -44,4 +44,5 @@ def play():
 		#Wyświetlenie obiektów i odświeżenie ekranu.
 		functions.update_screen(walls_h, walls_v, player, screen,
 		                        save_button, load_button)
+		                        
 play()

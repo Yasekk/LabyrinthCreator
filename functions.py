@@ -1,4 +1,4 @@
-"""Moduł zaiwerjące większość głównych funkcji programu"""
+"""Moduł zaiwerjące większość głównych funkcji programu."""
 
 import json
 import pygame
@@ -22,7 +22,8 @@ def create_grid_v_walls(settings, screen, grid_walls_v):
 			
 def create_grid_h_walls(settings, screen, grid_walls_h):
 	"""Tworzenie niewidzialnej siatki scian poziomych znaczącej miejsca,
-	po których kliknięciu będą zmikały lub pojawiały się ściany."""
+	po których kliknięciu będą zmikały lub pojawiały się ściany.
+	"""
 	for number_x in range(settings.width_grid_number+1):
 		for number_y in range(settings.height_grid_number+1):
 			wall_horizontal = WallHorizontal(settings, screen)
@@ -56,9 +57,9 @@ def create_h_walls(settings, screen, walls_h):
 
 
 def mouse_click(walls_h, walls_v, grid_walls_h, grid_walls_v, settings,
-                screen,save_button,load_button):
+                screen, save_button, load_button):
 	"""Reakcje na kliknięcie przyciskiem myszy."""
-	mouse_x,mouse_y = pygame.mouse.get_pos()	
+	mouse_x, mouse_y = pygame.mouse.get_pos()	
 	if save_button.rect.collidepoint(mouse_x, mouse_y):
 		#Jeżeli zostanie klikniety przycisk "save", nastąpi zapisanie 
 		#danych ścian pionowych i poziomych w plikach.
@@ -119,7 +120,7 @@ def mouse_click(walls_h, walls_v, grid_walls_h, grid_walls_v, settings,
 	#Jeżeli nie nastąpiło usunięcie ściany, a kliknięcie pokrywa się z
 	#niewidzialną śiatką, oznacza to, że ściany tam nie ma i może 
 	#zostać dodana.
-	if skip_create != True:
+	if not skip_create:
 		click_create_wall(grid_walls_h, grid_walls_v, walls_h, walls_v,
 		                  mouse_x, mouse_y, settings, screen)
 
@@ -128,13 +129,13 @@ def click_create_wall(grid_walls_h, grid_walls_v, walls_h, walls_v,
                       mouse_x, mouse_y, settings, screen):
 	"""Dodawanie nowej ściany w klikniętym miejscu."""
 	for wall in grid_walls_h:
-		if wall.rect.collidepoint(mouse_x, mouse_y) == True:
+		if wall.rect.collidepoint(mouse_x, mouse_y):
 			wall_h = WallHorizontal(settings, screen)
 			wall_h.rect.centerx = wall.rect.centerx
 			wall_h.rect.centery = wall.rect.centery
 			walls_h.add(wall_h)
 	for wall in grid_walls_v:
-		if wall.rect.collidepoint(mouse_x, mouse_y) == True:
+		if wall.rect.collidepoint(mouse_x, mouse_y):
 			wall_v = WallVertical(settings, screen)
 			wall_v.rect.centerx = wall.rect.centerx
 			wall_v.rect.centery = wall.rect.centery
@@ -144,12 +145,12 @@ def click_create_wall(grid_walls_h, grid_walls_v, walls_h, walls_v,
 def click_delete_wall(walls_h,walls_v,mouse_x,mouse_y):
 	"""Usuwanie kikniętej ściany."""
 	for wall in walls_h:
-		if wall.rect.collidepoint(mouse_x, mouse_y) == True:
+		if wall.rect.collidepoint(mouse_x, mouse_y):
 			wall.kill()
 			return True
 			break
 	for wall in walls_v:
-		if wall.rect.collidepoint(mouse_x, mouse_y) == True:
+		if wall.rect.collidepoint(mouse_x, mouse_y):
 			wall.kill()
 			return True
 			break

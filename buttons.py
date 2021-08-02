@@ -1,4 +1,4 @@
-"""Moduł zawierający klasy tworzące przyciski"""
+"""Moduł zawierający klasy tworzące przyciski."""
 
 import pygame
 
@@ -8,7 +8,7 @@ class ButtonSave():
 	def __init__(self, settings, screen):
 		"""Tworzenie przycisku zapisującego układ labiryntu."""
 		self.screen = screen
-		self.screen_rect=self.screen.get_rect()
+		self.screen_rect = self.screen.get_rect()
 		self.width = settings.width_grid*0.8
 		self.height = settings.height_grid*0.3
 		self.button_color = (100, 200, 100)
